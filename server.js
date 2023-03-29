@@ -21,34 +21,10 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/bulk", async (req, res) => {
-  const option = {
-    method: "GET",
-    url: URL_BULK,
-    headers: {
-      "content-type": "application/json",
-    },
-    data: {
-      locations: [
-        {
-          q: "New delhi",
-          custom_id: "0",
-        },
-        {
-          q: "Chennai",
-          custom_id: "1",
-        },
-        {
-          q: "Mumbai",
-          custom_id: "2",
-        },
-      ],
-    },
-  };
-  const resData = await axios.request(option);
-  res.json(resData?.data);
+app.get("/", async (_req, res) => {
+  res.json({ message: "Cors bypassed" });
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Server started`);
 });
